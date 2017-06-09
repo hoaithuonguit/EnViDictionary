@@ -292,9 +292,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flashcard_mặt_sau.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\1491244795_black_8_audio_headphones.ico" />
   </ItemGroup>
   <ItemGroup>

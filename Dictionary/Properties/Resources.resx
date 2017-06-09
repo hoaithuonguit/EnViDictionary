@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Flashcard_mặt_sau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <!--<data name="Flashcard_mặt_sau" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flashcard_mặt_sau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  </data>-->
   <data name="1491244795_black_8_audio_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1491244795_black_8_audio_headphones.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
