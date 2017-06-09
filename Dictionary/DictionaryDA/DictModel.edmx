@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EnViModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ENWORD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EnWord" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="EnVi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Example" Type="nchar" MaxLength="1000" />
+          <Property Name="Favote" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\THUONGDH\DESKTOP\TEST\ENVI.MDF.dbo.Favorite' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EnWord" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EnWord" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="idioms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EnWord" Type="nchar" MaxLength="500" Nullable="false" />
+          <Property Name="ViWord" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="structure1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EnWord" Type="nchar" MaxLength="1000" />
+          <Property Name="EnVi" Type="nvarchar(max)" />
+          <Property Name="Example" Type="nchar" MaxLength="1000" />
+          <Property Name="Key" Type="text" />
+        </EntityType>
+        <EntityType Name="Verbs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="First" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Second" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Thirst" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Meaning" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EnViModelStoreContainer">
+          <EntitySet Name="ENWORD" EntityType="Self.ENWORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="idioms" EntityType="Self.idioms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="structure1" EntityType="Self.structure1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verbs" EntityType="Self.Verbs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" store:Type="Tables"  Schema="dbo">
+            <!--<DefiningQuery>SELECT 
+[Favorite].[ID] AS [ID], 
+[Favorite].[EnWord] AS [EnWord]
+FROM [dbo].[Favorite] AS [Favorite]</DefiningQuery>-->
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnViModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ENWORD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EnWord1" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="EnVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Example" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Favote" Type="Int32" />
+        </EntityType>
+        <EntityType Name="idiom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EnWord" Type="String" MaxLength="500" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ViWord" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="structure1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EnWord" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="EnVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Example" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Key" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Verb">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="First" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Second" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Thirst" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Meaning" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EnWord" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EnWord" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EnViEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ENWORDs" EntityType="Self.ENWORD" />
+          <EntitySet Name="idioms" EntityType="Self.idiom" />
+          <EntitySet Name="structure1" EntityType="Self.structure1" />
+          <EntitySet Name="Verbs" EntityType="Self.Verb" />
+          <EntitySet Name="Favorites" EntityType="Self.Favorite" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnViModelStoreContainer" CdmEntityContainer="EnViEntities1">
+          <EntitySetMapping Name="ENWORDs">
+            <EntityTypeMapping TypeName="EnViModel.ENWORD">
+              <MappingFragment StoreEntitySet="ENWORD">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnWord1" ColumnName="EnWord" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EnVi" ColumnName="EnVi" />
+                <ScalarProperty Name="Example" ColumnName="Example" />
+                <ScalarProperty Name="Favote" ColumnName="Favote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="idioms">
+            <EntityTypeMapping TypeName="EnViModel.idiom">
+              <MappingFragment StoreEntitySet="idioms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnWord" ColumnName="EnWord" />
+                <ScalarProperty Name="ViWord" ColumnName="ViWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="structure1">
+            <EntityTypeMapping TypeName="EnViModel.structure1">
+              <MappingFragment StoreEntitySet="structure1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnWord" ColumnName="EnWord" />
+                <ScalarProperty Name="EnVi" ColumnName="EnVi" />
+                <ScalarProperty Name="Example" ColumnName="Example" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verbs">
+            <EntityTypeMapping TypeName="EnViModel.Verb">
+              <MappingFragment StoreEntitySet="Verbs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="First" ColumnName="First" />
+                <ScalarProperty Name="Second" ColumnName="Second" />
+                <ScalarProperty Name="Thirst" ColumnName="Thirst" />
+                <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorites">
+            <EntityTypeMapping TypeName="EnViModel.Favorite">
+              <MappingFragment StoreEntitySet="Favorite">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EnWord" ColumnName="EnWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
