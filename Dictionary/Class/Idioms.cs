@@ -30,6 +30,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// Dem
+        /// </summary>
+        /// <returns></returns>
         public int Dem()
         {
             using (var context = new EnViEntities1())
@@ -40,6 +44,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// GetDataIdiorm
+        /// </summary>
+        /// <returns></returns>
         public List<Idiorm> GetDataIdiorm()
         {
             for (int i = 0; i < 10; i++) arrRandom[i] = -1;
@@ -53,12 +61,22 @@ namespace Dictionary.Class
             return result;
         }
 
+        /// <summary>
+        /// CheckExist
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public bool CheckExist(int i)
         {
             for (int j = 0; j < 10; j++)
                 if (arrRandom[j] == i) return false; return true;
         }
-        public  Idiorm GetDataIdoirmWithID(int k)
+        /// <summary>
+        /// GetDataIdoirmWithID
+        /// </summary>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public Idiorm GetDataIdoirmWithID(int k)
         {
             Random ran = new Random();
             int i = ran.Next(0, Dem());

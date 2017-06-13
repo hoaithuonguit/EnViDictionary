@@ -19,30 +19,10 @@ namespace Dictionary.Class
     
     public class NewWord
     {
-        public int[] arrRandom = new int[10] ;
+        public int[] arrRandom = new int[10] ;      
         /// <summary>
-        /// GetAllWordFromDatabase-- using for init Mainform
+        /// DeleteRecent
         /// </summary>
-        /// <returns> ToList<Word> </returns>
-        public List<Word> GetAllWordFromDatabase()
-        {
-            using (var context = new EnViEntities1())
-            {
-                var result = (from a in context.ENWORDs
-                              select new Word()
-                              {
-                                  ID = a.ID,
-                                  EnWord = a.EnWord1,
-                                  ViWord = a.EnVi,
-                                  Type = a.Type,
-                                  Example = a.Example,
-                                  Favorite = a.Favote,
-                              }).ToList<Word>();
-                return result;
-
-            }
-        }
-
         internal void DeleteRecent()
         {
             using (var context = new EnViEntities1())
@@ -52,6 +32,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// Init
+        /// </summary>
+        /// <returns></returns>
         public List<string> Init()
         {
             using (var context = new EnViEntities1())
@@ -64,10 +48,7 @@ namespace Dictionary.Class
                 return result;
             }
         }
-
-
-     
-      
+    
         /// <summary>
         /// GetWordWhenSearch
         /// </summary>
@@ -92,6 +73,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// SetFavorite
+        /// </summary>
+        /// <param name="inWord"></param>
         public void SetFavorite(string inWord)
         {
             using (var context = new EnViEntities1())
@@ -173,6 +158,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// Dem
+        /// </summary>
+        /// <returns></returns>
         public int Dem()
         {
             using (var context = new EnViEntities1())
@@ -185,40 +174,11 @@ namespace Dictionary.Class
               
         }
 
-
-        public void InsertIntoFavorite (int inID, string inEnWord )
-        {
-            using (var context = new EnViEntities1())
-            {
-                if (CheckFavorite(inEnWord))
-                {
-                    Favorite word = new Favorite()
-                    {
-                        ID = inID,
-                        EnWord = inEnWord
-                    };
-                    context.Favorites.Add(word);
-                    context.Entry(word).State = EntityState.Added;
-                    SetFavorite(inEnWord);
-                    context.SaveChanges();  
-                }
-
-            }
-        }
-
-        public bool CheckFavorite(string inEnWord)
-        {
-            using (var context = new EnViEntities1())
-            {
-                var check = (from a in context.Favorites
-                             where a.EnWord == inEnWord
-                             select a).ToList();
-                if (check.Count == 0) return true;
-            }
-                return false;
-        }
-
-       public List<string> GetFavoriteWord()
+        /// <summary>
+        /// GetFavoriteWord
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetFavoriteWord()
         {
             using (var context = new EnViEntities1())
             {
@@ -229,6 +189,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// XoaFavorite
+        /// </summary>
+        /// <param name="inWord"></param>
         public void XoaFavorite(string inWord)
         {
             using (var context = new EnViEntities1())
@@ -242,6 +206,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// GetTuRandom
+        /// </summary>
+        /// <returns></returns>
         public string GetTuRandom()
         {
             
@@ -257,41 +225,27 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// GetDataWord
+        /// </summary>
+        /// <returns></returns>
         public List<BaseWord> GetDataWord()
-        {
-            //int[] id = new int[10];
-            //for (int i=0; i< 10; i++)
-            //{
-            //    //int check = 0;
-            //    //while (check == 0)
-            //    //{
-            //    //    Random ran = new Random();
-            //    //    int k = ran.Next(0, Dem());
-
-            //    //    for (int j = 0; j < i; j++)
-            //    //    {
-            //    //        if (k == id[j])
-            //    //        {
-            //    //            check = 1;
-            //    //            break;
-            //    //        }
-            //    //    }
-            //    //    if (check == 1) id[i] = k;
-            //    //}
-            //    Random ran = new Random();
-            //    id[i] = ran.Next(0, Dem());
-            //}
+        {            
             for (int i = 0; i < 10; i++) arrRandom[i] = -1;
             List<BaseWord> result = new List<BaseWord>();
             for (int i = 0; i< 10; i++)
             {
                 result.Add(GetDataWordWithID(i));
                
-            }
-            
+            }            
             return result;
         }
 
+        /// <summary>
+        /// GetDataWordWithID
+        /// </summary>
+        /// <param name="k"></param>
+        /// <returns></returns>
         public BaseWord GetDataWordWithID(int k)
         {
             Random ran = new Random();
@@ -314,12 +268,21 @@ namespace Dictionary.Class
             
         }
 
+        /// <summary>
+        /// CheckExist
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public bool CheckExist(int i)
         {
             for (int j = 0; j < 10; j++)
                 if (arrRandom[j] == i ) return false; return true;
         }
 
+        /// <summary>
+        /// AddRecentWord
+        /// </summary>
+        /// <param name="inWords"></param>
         public void AddRecentWord(string inWords)
         {
             using (var context = new EnViEntities1())
@@ -341,6 +304,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// DemRecent
+        /// </summary>
+        /// <returns></returns>
         public int DemRecent ()
         {
             using (var context = new EnViEntities1())
@@ -350,6 +317,10 @@ namespace Dictionary.Class
             }
         }
 
+        /// <summary>
+        /// GetRecent
+        /// </summary>
+        /// <returns></returns>
         public List<string > GetRecent ()
         {
             using (var context = new EnViEntities1())
